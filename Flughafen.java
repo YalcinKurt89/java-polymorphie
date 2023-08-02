@@ -37,19 +37,30 @@ public class Flughafen extends JFrame {
 
 
 // Layout
-        setLayout(new BorderLayout());
-        JPanel obenPanel = new JPanel(new FlowLayout());
-        obenPanel.add(new JLabel("Flugzeugtyp auswählen:"));
-        obenPanel.add(flugzeugComboBox);
-        obenPanel.add(anzeigenButton);
+        setLayout(new BorderLayout()); // Hier wird das Layout des JFrame auf BorderLayout gesetzt. BorderLayout ist ein Layout-Manager, der Komponenten in fünf Bereichen anordnet: Norden (NORTH), Süden (SOUTH), Westen (WEST), Osten (EAST) und Zentrum (CENTER).
+        JPanel obenPanel = new JPanel(new FlowLayout()); //  Es wird ein neues JPanel mit FlowLayout erstellt und in der Variable "obenPanel" gespeichert. FlowLayout ist ein Layout-Manager, der Komponenten in einer Zeile oder einer Spalte anordnet, und wenn der Platz nicht ausreicht, wird eine neue Zeile oder Spalte begonnen.
+        obenPanel.add(new JLabel("Flugzeugtyp auswählen:")); // Ein JLabel mit dem Text "Flugzeugtyp auswählen:" wird erstellt und dem "obenPanel" hinzugefügt.
+        obenPanel.add(flugzeugComboBox); // Die JComboBox flugzeugComboBox, die die verschiedenen Flugzeugtypen enthält, wird dem "obenPanel" hinzugefügt.
+        obenPanel.add(anzeigenButton); //  Der JButton "anzeigenButton" mit der Beschriftung "Anzeigen" wird dem "obenPanel" hinzugefügt.
 
-        add(obenPanel, BorderLayout.NORTH);
+        add(obenPanel, BorderLayout.NORTH); //  Das obenPanel wird dem JFrame im nördlichen (oberen) Bereich des BorderLayouts hinzugefügt. Dadurch werden die Komponenten (JLabel, JComboBox und JButton) im nördlichen Bereich des Fensters angeordnet.
         add(new JScrollPane(ausgabeTextArea), BorderLayout.CENTER);
+        /* Eine JScrollPane (eine Scrollbar-Komponente) wird erstellt und dem ausgabeTextArea (der Textausgabe) hinzugefügt. Die JScrollPane wird dann 
+        dem JFrame im zentralen Bereich des BorderLayouts hinzugefügt. Dadurch wird das ausgabeTextArea im zentralen Bereich des Fensters angeordnet. 
+        Wenn der Text im ausgabeTextArea den verfügbaren Bereich überschreitet, wird eine Scrollbar angezeigt, um durch den Text zu scrollen.        
+         */
     }
 
 
     private void zeigeFlugzeugLandung() {
+
 // Ausgewählten Flugzeugtyp aus der ComboBox erhalten
+
+        /* flugzeugComboBox ist eine JComboBox, die die verschiedenen Flugzeugtypen enthält 
+        (z. B. "Standard-Flugzeug", "Passagierflugzeug", "Frachtflugzeug", "Militärflugzeug"). 
+        getSelectedItem() ist eine Methode der JComboBox, die das aktuell ausgewählte Element in 
+        der ComboBox zurückgibt. In diesem Fall wird das ausgewählte Flugzeugtyp-Element als Object zurückgegeben.
+        */
         String flugzeugTyp = (String) flugzeugComboBox.getSelectedItem();
         Flugzeug flugzeug;
 
